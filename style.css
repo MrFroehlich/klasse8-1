@@ -204,3 +204,107 @@ body {
     padding: 6px 12px;
   }
 }
+
+
+
+
+
+main2 {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+}
+
+main section {
+  margin-bottom: 3rem;
+  padding: 1.5rem 1rem;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 0.05);
+}
+
+main h1, main h2 {
+  font-weight: 700;
+  color: #0a3d62; /* dunkles Blau */
+  margin-bottom: 0.75rem;
+}
+
+main h1 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+main p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-top: 0;
+}
+
+.countdown-section #countdown {
+  display: flex;
+  justify-content: center;
+  gap: 1.8rem;
+  margin-top: 1rem;
+}
+
+.countdown-section #countdown > div {
+  background-color: #0a3d62;
+  color: white;
+  padding: 1rem 1.4rem;
+  border-radius: 8px;
+  width: 70px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 0.15);
+}
+
+.countdown-section #countdown > div .number {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.countdown-section #countdown > div .label {
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+blockquote {
+  font-style: italic;
+  color: #555;
+  border-left: 4px solid #0a3d62;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.overview-section ul {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.overview-section ul li a {
+  display: block;
+  padding: 0.6rem 1rem;
+  background: #0a3d62;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.overview-section ul li a:hover {
+  background: #084d8a;
+}
