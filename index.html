@@ -44,34 +44,38 @@
       </div>
     </section>
 
-    <section class="about">
-  <div class="about-flex container">
-    <div class="about-text">
-      <h3>😯 Was dich erwartet</h3>
-      <ul>
-        <li>Eigene Musikproduktion in verschiedenen Stilen</li>
-        <li>Karaoke- und Lyrics-Videos für deine Lieblingssongs</li>
-        <li>Ab und zu mal Behind-the-Scenes als Special</li>
-        <li>Musik zum Abhängen, Feiern oder einfach chillen</li>
-        <li>Einblicke in die Welt der Musikproduktion</li>
-        <li>Experimentell mit KI generierte Songs</li>
-      </ul>
+    <section class="welcome-section">
+    <h1>Willkommen auf der Klassen-Webseite!</h1>
+    <p>Hier findest du alle wichtigen Infos rund um unsere Klasse.</p>
+  </section>
 
-      <h3>📷 Videoarten</h3>
-      <ul>
-        <li>🎵 Selbst produzierte Musikvideos und Songs</li>
-        <li>🎤 Karaoke-Videos mit Lyrics</li>
-        <li>🎼 Lyric-Videos zum Mitsingen</li>
-        <li>🤫 Behind-the-Scenes (gelegentlich)</li>
-        <li>🎧 Personalisierte Songs und Specials</li>
-      </ul>
-
-      <h3>💡 Unterstützt mich!</h3>
-      <p><b>Der Kanal ist noch im Aufbau!</b> Danke für eure Geduld, falls noch nicht alles rund läuft. Tretet gern meinem Discord bei, gebt Feedback, schreibt Kommentare, abonniert den Kanal, lasst ein Like da und speichert eure Lieblingssongs in den Favoriten. So unterstützt ihr mich und helft mir, besser zu werden. 🚨🔥</p>
+  <section class="countdown-section">
+    <h2>Countdown bis zum Sommerfest</h2>
+    <div id="countdown">
+      <!-- Countdown-Zahlen werden hier per JavaScript eingefügt -->
+      <p>Noch <span id="days">--</span> Tage, <span id="hours">--</span> Stunden, <span id="minutes">--</span> Minuten und <span id="seconds">--</span> Sekunden!</p>
     </div>
+  </section>
 
-  </div>
-</section>
+  <section class="quote-section">
+    <h2>Zitat des Tages</h2>
+    <blockquote>
+      <p id="quote">„Bildung ist die mächtigste Waffe, die du verwenden kannst, um die Welt zu verändern.“ – Nelson Mandela</p>
+    </blockquote>
+  </section>
+
+  <section class="overview-section">
+    <h2>Was dich hier erwartet</h2>
+    <ul>
+      <li><a href="ankündigungen.html">Ankündigungen</a></li>
+      <li><a href="termine.html">Termine & Veranstaltungen</a></li>
+      <li><a href="projekte.html">Projekte</a></li>
+      <li><a href="downloads.html">Downloads & Formulare</a></li>
+      <li><a href="sommerfest.html">Planung Sommerfest</a></li>
+      <li><a href="witze.html">Witze & Zitate</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </section>
   </main>
 
   <footer class="footer">
@@ -81,3 +85,34 @@
   </footer>
 </body>
 </html>
+
+
+<script>
+  // Datum, bis zu dem runtergezählt wird (JJJJ, MM-1, TT, hh, mm, ss)
+  // Beispiel: Sommerfest am 15. Juli 2025 um 15:00 Uhr
+  const countdownDate = new Date(2025, 6, 28, 0, 1, 0).getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    if (distance < 0) {
+      document.getElementById("countdown").innerHTML = "<p>Das Sommerfest hat begonnen!</p>";
+      clearInterval(interval);
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+  }
+
+  updateCountdown(); // sofort ausführen
+  const interval = setInterval(updateCountdown, 1000);
+</script>
