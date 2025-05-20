@@ -22,7 +22,7 @@ body {
 .header {
   background-color: #121212;
   padding: 20px 0;
-  border-bottom: 3px solid #346bc2;
+  border-bottom: 3px solid #24415b;
 }
 
 .header-flex {
@@ -74,8 +74,8 @@ body {
 .nav li a {
   display: block;
   padding: 10px 16px;
-  background-color: #4287f5;
-  color: #121212;
+  background-color: #1A2E41;
+  color: white;
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
@@ -83,23 +83,23 @@ body {
 }
 
 .nav li a:hover {
-  background-color: #3a76e0;
+  background-color: #162737;
   transform: scale(1.1);
 }
 
 .nav li a.active {
-  background-color: #2f6fe0;
+  background-color: #162737;
   pointer-events: none;
   cursor: default;
 }
 
 /* === HERO === */
 .hero {
-  background: linear-gradient(to right, #4287f5, #4287f5);
+  background: linear-gradient(to right, #24415b, #24415b);
   color: #000;
   padding: 80px 20px;
   text-align: center;
-  border-bottom: 4px solid #346bc2;
+  border-bottom: 4px solid #24415b;
 }
 
 .hero h1 {
