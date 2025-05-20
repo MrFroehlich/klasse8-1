@@ -209,28 +209,24 @@ body {
 
 
 
-main2 {
+/* MAIN-BEREICH */
+main {
   max-width: 900px;
   margin: 2rem auto;
   padding: 1rem 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #222;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+  color: #fff;
 }
 
+/* ABSCHNITTE */
 main section {
   margin-bottom: 3rem;
-  padding: 1.5rem 1rem;
-  background: white;
-  border-radius: 6px;
-  box-shadow: 0 1px 6px rgb(0 0 0 / 0.05);
 }
 
+/* ÜBERSCHRIFTEN */
 main h1, main h2 {
   font-weight: 700;
-  color: #0a3d62; /* dunkles Blau */
+  color: #ffffff;
   margin-bottom: 0.75rem;
 }
 
@@ -239,72 +235,89 @@ main h1 {
   text-align: center;
 }
 
-main p {
-  font-size: 1.1rem;
-  line-height: 1.5;
-  margin-top: 0;
-}
-
-.countdown-section #countdown {
+/* COUNTDOWN */
+#countdown {
   display: flex;
   justify-content: center;
-  gap: 1.8rem;
+  gap: 1.2rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
-.countdown-section #countdown > div {
+#countdown > div {
   background-color: #0a3d62;
-  color: white;
-  padding: 1rem 1.4rem;
-  border-radius: 8px;
-  width: 70px;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 80px;
+  height: 100px;
   text-align: center;
-  box-shadow: 0 3px 8px rgb(0 0 0 / 0.15);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.countdown-section #countdown > div .number {
-  font-size: 2.4rem;
-  font-weight: 700;
-  line-height: 1;
+#countdown .number {
+  font-size: 2.2rem;
+  font-weight: bold;
 }
 
-.countdown-section #countdown > div .label {
-  font-size: 0.85rem;
-  margin-top: 0.25rem;
+#countdown .label {
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
+/* ZITAT */
 blockquote {
   font-style: italic;
-  color: #555;
-  border-left: 4px solid #0a3d62;
+  color: #ccc;
+  border-left: 4px solid #ffffff;
   padding-left: 1rem;
   margin: 0;
 }
 
+/* ÜBERSICHT-LINKS */
 .overview-section ul {
   list-style: none;
   padding-left: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin-top: 1rem;
 }
 
 .overview-section ul li a {
-  display: block;
   padding: 0.6rem 1rem;
-  background: #0a3d62;
+  background: #1e90ff;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-weight: 600;
-  text-align: center;
   transition: background-color 0.3s ease;
+  display: block;
 }
 
 .overview-section ul li a:hover {
-  background: #084d8a;
+  background: #187bcd;
+}
+
+
+
+/* FADE-IN ANIMATION */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
 }
