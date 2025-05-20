@@ -74,7 +74,7 @@ body {
 .nav li a {
   display: block;
   padding: 10px 16px;
-  background-color: #1A2E41;
+  background-color: #24415b;
   color: white;
   text-decoration: none;
   border-radius: 6px;
@@ -83,12 +83,12 @@ body {
 }
 
 .nav li a:hover {
-  background-color: #162737;
+  background-color: #1A2E41;
   transform: scale(1.1);
 }
 
 .nav li a.active {
-  background-color: #162737;
+  background-color: #1A2E41;
   pointer-events: none;
   cursor: default;
 }
