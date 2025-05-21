@@ -74,8 +74,9 @@
     <h1 class="main-title">Klasse 8/1 – Martin-Luther-Gymnasium Eisleben</h1>
     <h2 class="sub-title">– Webseite –</h2>
     </div>
-    
-    <img src="Dein Abschnittstext(4).png" class="corner-logo right-logo" alt="Logo rechts">
+
+    <img src="Dein Abschnittstext(4).png" class="corner-logo right-logo" alt="Logo rechts" style="height: 100px; width: 100px; display: block;">
+
   </div>
 
   <nav>
@@ -90,11 +91,64 @@
       <li><a href="kontakt.html">Kontakt</a></li>
     </ul>
   </nav>
+
+<div id="login-status" style="position: absolute; top: 265px; right: 20px; font-weight: bold;">
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const statusBox = document.getElementById("login-status");
+    const istEingeloggt = sessionStorage.getItem("eingeloggt") === "true";
+
+    if (istEingeloggt) {
+      statusBox.textContent = "🔓 Eingeloggt";
+      statusBox.style.color = "green";
+    } else {
+      statusBox.textContent = "🔒 Ausgeloggt";
+      statusBox.style.color = "red";
+    }
+  });
+</script>
+
+  </div>
+      
   </header>
 
+
+<div style="position: absolute; top: 20px; right: 20px; text-align: right;">
+  <input type="password" id="password-input" placeholder="Passwort" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc;">
+  <button onclick="login()" style="padding: 4px 10px; border: none; background-color: #0078D7; color: white; border-radius: 4px;">Login</button>
+  <div id="login-message" style="color: red; font-size: 0.9rem; margin-top: 4px;"></div>
+</div>
+  
+
   <main class="main-content">
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const istEingeloggt = sessionStorage.getItem("eingeloggt") === "true";
+
+    if (!istEingeloggt) {
+      const main = document.querySelector("main");
+      main.innerHTML = `
+        <div style="text-align: center; margin-top: 100px;">
+          <div style="font-size: 60px; color: #cc0000; margin-bottom: 20px;">⚠️</div>
+          <h2 style="color: red;">Diese Seite ist passwortgeschützt</h2>
+          <p>Bitte logge dich oben im Header ein, um den Inhalt dieser Seite zu sehen.</p>
+        </div>
+      `;
+    }
+  });
+</script>
+
+    
     <h1 class="page-title"><u>Termine & Veranstaltungen</u></h1>
     <p style="text-align: center; margin-bottom: 2rem; color: #cccccc">Hier findest du alle geplanten Klassenveranstaltungen und wichtigen schulischen Termine.</p>
+
+        <div style="text-align: center; margin-bottom: 30px;" class="fade-in">
+  <input type="text" id="searchInput" placeholder="🔍 Suche in Terminen und Veranstaltungen..." 
+         style="padding: 10px; width: 60%; max-width: 400px; font-size: 1rem; border: 1px solid #cccc; border-radius: 6px;">
+    </div>
 
     <div class="event-grid">
 
@@ -129,6 +183,44 @@
       <p>&copy; 2025 Julian Kaiser | Alle Rechte vorbehalten</p>
     </div>
   </footer>
-    <!-- Dein Footer-Code hier -->
+
+
+<script>
+  document.getElementById("searchInput").addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+    const updates = document.querySelectorAll(".update-box");
+
+    updates.forEach(update => {
+      const text = update.innerText.toLowerCase();
+      update.style.display = text.includes(query) ? "block" : "none";
+    });
+  });
+</script>
+
+
+
+    <script>
+  function login() {
+    const input = document.getElementById("password-input").value;
+    const correctPassword = "mlg8klasse"; // Dein gewünschtes Passwort
+    const messageBox = document.getElementById("login-message");
+
+    if (input === correctPassword) {
+      sessionStorage.setItem("eingeloggt", "true");
+      messageBox.style.color = "green";
+      messageBox.innerHTML = "Erfolgreich eingeloggt! <br> Du kannst nun alle passwortgeschützten Seiten sehen!";
+      setTimeout(() => {
+        messageBox.textContent = "";
+        location.reload(); // Seite neu laden, um ggf. Inhalte sichtbar zu machen
+      }, 3000);
+    } else {
+      messageBox.style.color = "red";
+      messageBox.textContent = "Falsches Passwort!";
+    }
+  }
+</script>
+  
+
+  
 </body>
 </html>
