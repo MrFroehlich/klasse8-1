@@ -23,7 +23,7 @@ body {
 .header {
   background-color: #121212;
   padding: 20px 0;
-  border-bottom: 3px solid #d36b00;
+  border-bottom: 3px solid #1A2E41;
 }
 
 .logo {
@@ -46,8 +46,8 @@ body {
 .nav li a {
   display: block;
   padding: 10px 16px;
-  background-color: #f77f00;
-  color: #121212;
+  background-color: #24415b;
+  color: white;
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
@@ -63,10 +63,11 @@ body {
 /* HERO */
 .hero {
   background: linear-gradient(to right, #24415b, #24415b);
-  color: #000;
+  color: white;
   padding: 80px 20px;
   text-align: center;
   border-bottom: 4px solid #1A2E41;
+  margin-bottom: 15px;
 }
 
 .hero h1 {
