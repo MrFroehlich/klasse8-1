@@ -108,6 +108,29 @@
       <p>&copy; 2025 Julian Kaiser | Alle Rechte vorbehalten</p>
     </div>
   </footer>
-  
+
+
+    
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const neuTags = document.querySelectorAll(".neu-tag");
+
+    neuTags.forEach(tag => {
+      const dateTag = tag.previousElementSibling;
+      const postDate = new Date(dateTag.getAttribute("data-date"));
+      const today = new Date();
+
+      const timeDiff = today - postDate;
+      const daysDiff = timeDiff / (1000 * 60 * 60 * 24);
+
+      if (daysDiff > 3) {
+        tag.style.display = "none";
+      }
+    });
+  });
+</script>
+
+    
+    
 </body>
 </html>
