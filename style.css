@@ -322,8 +322,15 @@ blockquote {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
+.hero {
+  background: linear-gradient(to right, #24415b, #24415b);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  border-bottom: 4px solid #1A2E41;
+}
 
 .hero .container {
-  max-width: 100%;
+  max-width: 100% !important;
   width: 100%;
 }
