@@ -389,7 +389,7 @@ blockquote {
 
 .overview-section ul li a {
   padding: 0.6rem 1rem;
-  background: #1e90ff;
+  background: #24415b;
   color: white;
   text-decoration: none;
   border-radius: 6px;
@@ -399,7 +399,7 @@ blockquote {
 }
 
 .overview-section ul li a:hover {
-  background: #187bcd;
+  background: #1A2E41;
 }
 
 
