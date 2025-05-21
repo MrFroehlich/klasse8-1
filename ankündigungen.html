@@ -142,6 +142,17 @@
 
     
     <!-- UPDATE BOX -->
+
+        <div class="update-box fade-in">
+      <h2>A02 – Sommerfest am 26.06.2025</h2>
+      <div class="tags">
+        <span class="tag1 date-tag" data-date="2025-05-21">Erstellt am: <b>21.05.2025</b></span>
+        <span class="tag1">Author: <b>Julian Kaiser</b></span>
+        <span class="tag2 neu-tag">NEU</span>
+      </div>
+      <p>Am 26.05.2025 wird von 07:30 Uhr bis 12:00 Uhr das jährliche Sommerfest stattfinden! <br>
+      Vielen Dank!</p>
+    </div>
     
     
     <div class="update-box fade-in">
@@ -164,32 +175,6 @@
     </div>
   </footer>
 
-
-    
-    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const neuTags = document.querySelectorAll(".neu-tag");
-
-    neuTags.forEach(tag => {
-      const dateTag = tag.previousElementSibling;
-      const dateString = dateTag.getAttribute("data-date");
-
-      // Datum manuell als UTC-Zeitpunkt interpretieren
-      const parts = dateString.split("-");
-      const postDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
-      
-      const now = new Date();
-      const today = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
-
-      const diffInMs = today - postDate;
-      const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-
-      if (diffInDays > 3) {
-        tag.style.display = "none";
-      }
-    });
-  });
-</script>
 
     
 
