@@ -117,13 +117,19 @@
 
     neuTags.forEach(tag => {
       const dateTag = tag.previousElementSibling;
-      const postDate = new Date(dateTag.getAttribute("data-date"));
-      const today = new Date();
+      const dateString = dateTag.getAttribute("data-date");
 
-      const timeDiff = today - postDate;
-      const daysDiff = timeDiff / (1000 * 60 * 60 * 24);
+      // Datum manuell als UTC-Zeitpunkt interpretieren
+      const parts = dateString.split("-");
+      const postDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
+      
+      const now = new Date();
+      const today = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
 
-      if (daysDiff > 3) {
+      const diffInMs = today - postDate;
+      const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+      if (diffInDays > 3) {
         tag.style.display = "none";
       }
     });
