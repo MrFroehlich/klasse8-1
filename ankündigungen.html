@@ -86,6 +86,18 @@
     
     <h1 style="text-align: center; margin-top: 0.5rem; margin-bottom: 60px; color: #cccccc"><u>Klasse 8/1 – Ankündigungen</u></h1>
 
+    
+    <div style="text-align: center; margin-bottom: 15px;">
+  <label for="tagFilter"><b>🔎 Filtern nach Tag:</b></label>
+  <select id="tagFilter" style="padding: 8px; font-size: 1rem; border-radius: 6px;">
+    <option value="all">Alle</option>
+    <option value="neu">NEU</option>
+    <option value="julian">Author: Julian Kaiser</option>
+    <option value="2025-05-21">Datum: 21.05.2025</option>
+  </select>
+    </div>
+
+    
     <div style="text-align: center; margin-bottom: 30px;" class="fade-in">
   <input type="text" id="searchInput" placeholder="🔍 Suche in Ankündigungen..." 
          style="padding: 10px; width: 60%; max-width: 400px; font-size: 1rem; border: 1px solid #cccc; border-radius: 6px;">
@@ -155,6 +167,37 @@
       update.style.display = text.includes(query) ? "block" : "none";
     });
   });
+</script>
+
+
+    <script>
+  const searchInput = document.getElementById("searchInput");
+  const tagFilter = document.getElementById("tagFilter");
+
+  function filterUpdates() {
+    const query = searchInput.value.toLowerCase();
+    const selectedTag = tagFilter.value;
+    const updates = document.querySelectorAll(".update-box");
+
+    updates.forEach(update => {
+      const text = update.innerText.toLowerCase();
+      const matchesSearch = text.includes(query);
+
+      let matchesTag = true;
+      if (selectedTag === "neu") {
+        matchesTag = update.querySelector(".neu-tag") !== null;
+      } else if (selectedTag === "julian") {
+        matchesTag = text.includes("julian kaiser");
+      } else if (selectedTag === "2025-05-21") {
+        matchesTag = update.innerHTML.includes("2025-05-21");
+      }
+
+      update.style.display = (matchesSearch && matchesTag) ? "block" : "none";
+    });
+  }
+
+  searchInput.addEventListener("input", filterUpdates);
+  tagFilter.addEventListener("change", filterUpdates);
 </script>
 
     
