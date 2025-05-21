@@ -400,6 +400,7 @@ blockquote {
 
 .overview-section ul li a:hover {
   background: #1A2E41;
+  transform: scale(1.1)
 }
 
 
