@@ -79,6 +79,25 @@
       <li><a href="kontakt.html">Kontakt</a></li>
     </ul>
   </nav>
+
+<div id="login-status" style="position: absolute; top: 10px; right: 20px; font-weight: bold;"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const statusBox = document.getElementById("login-status");
+    const istEingeloggt = sessionStorage.getItem("eingeloggt") === "true";
+
+    if (istEingeloggt) {
+      statusBox.textContent = "🔓 Eingeloggt";
+      statusBox.style.color = "green";
+    } else {
+      statusBox.textContent = "🔒 Ausgeloggt";
+      statusBox.style.color = "red";
+    }
+  });
+</script>
+    
+    
 </header>
 
 <div style="position: absolute; top: 20px; right: 20px; text-align: right;">
