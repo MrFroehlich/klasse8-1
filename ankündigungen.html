@@ -64,8 +64,7 @@
     <h1 class="main-title">Klasse 8/1 – Martin-Luther-Gymnasium Eisleben</h1>
     <h2 class="sub-title">– Webseite –</h2>
     </div>
-    
-    <img src="Dein Abschnittstext(4).png" class="corner-logo right-logo" alt="Logo rechts">
+
   </div>
 
   <nav>
@@ -81,6 +80,13 @@
     </ul>
   </nav>
 </header>
+
+<div style="position: absolute; top: 20px; right: 20px; text-align: right;">
+  <input type="password" id="password-input" placeholder="Passwort" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc;">
+  <button onclick="login()" style="padding: 4px 10px; border: none; background-color: #0078D7; color: white; border-radius: 4px;">Login</button>
+  <div id="login-message" style="color: red; font-size: 0.9rem; margin-top: 4px;"></div>
+</div>
+    
   
   <main class="main-content">
     
@@ -156,6 +162,29 @@
       update.style.display = text.includes(query) ? "block" : "none";
     });
   });
+</script>
+
+
+
+    <script>
+  function login() {
+    const input = document.getElementById("password-input").value;
+    const correctPassword = "mlg8klasse"; // Dein gewünschtes Passwort
+    const messageBox = document.getElementById("login-message");
+
+    if (input === correctPassword) {
+      sessionStorage.setItem("eingeloggt", "true");
+      messageBox.style.color = "green";
+      messageBox.innerHTML = "Erfolgreich eingeloggt! <br> Du kannst nun alle passwortgeschützten Seiten sehen!";
+      setTimeout(() => {
+        messageBox.textContent = "";
+        location.reload(); // Seite neu laden, um ggf. Inhalte sichtbar zu machen
+      }, 3000);
+    } else {
+      messageBox.style.color = "red";
+      messageBox.textContent = "Falsches Passwort!";
+    }
+  }
 </script>
 
   
