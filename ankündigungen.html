@@ -144,6 +144,20 @@
 </script>
 
     
+
+<script>
+  document.getElementById("searchInput").addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+    const updates = document.querySelectorAll(".update-box");
+
+    updates.forEach(update => {
+      const text = update.innerText.toLowerCase();
+      update.style.display = text.includes(query) ? "block" : "none";
+    });
+  });
+</script>
+
+    
     
 </body>
 </html>
