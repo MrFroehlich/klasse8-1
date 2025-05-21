@@ -327,6 +327,7 @@ blockquote {
   color: white;
   padding: 80px 20px;
   text-align: center;
+  animation: fadeIn 0.8s ease-out forwards
   border-bottom: 4px solid #1A2E41;
 }
 
