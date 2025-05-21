@@ -252,6 +252,9 @@ body {
 }
 
 .title-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
   background-color: #444; /* optional, falls der graue Hintergrund gewünscht ist */
   padding: 20px;
