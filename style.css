@@ -321,3 +321,9 @@ blockquote {
 .fade-in {
   animation: fadeIn 0.8s ease-out forwards;
 }
+
+
+.hero .container {
+  max-width: 100%;
+  width: 100%;
+}
