@@ -106,7 +106,7 @@
     if (input === correctPassword) {
       sessionStorage.setItem("eingeloggt", "true");
       messageBox.style.color = "green";
-      messageBox.textContent = "Erfolgreich eingeloggt! Du kannst nun alle \n passwortgeschützten Seiten sehen!";
+      messageBox.innerHTML = "Erfolgreich eingeloggt! <br> Du kannst nun alle passwortgeschützten Seiten sehen!";
       setTimeout(() => {
         messageBox.textContent = "";
         location.reload(); // Seite neu laden, um ggf. Inhalte sichtbar zu machen
