@@ -89,6 +89,23 @@
     
   
   <main class="main-content">
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const istEingeloggt = sessionStorage.getItem("eingeloggt") === "true";
+
+    if (!istEingeloggt) {
+      const main = document.querySelector("main");
+      main.innerHTML = `
+        <div style="text-align: center; margin-top: 100px;">
+          <h2 style="color: red;">Diese Seite ist passwortgeschützt</h2>
+          <p>Bitte logge dich oben im Header ein, um den Inhalt dieser Seite zu sehen.</p>
+        </div>
+      `;
+    }
+  });
+</script>
+    
     
     <h1 style="text-align: center; margin-top: 0.5rem; margin-bottom: 60px; color: #cccccc"><u>Klasse 8/1 – Ankündigungen</u></h1>
     
