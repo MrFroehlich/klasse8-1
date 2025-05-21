@@ -85,23 +85,6 @@
   <main class="main-content">
     
     <h1 style="text-align: center; margin-top: 0.5rem; margin-bottom: 60px; color: #cccccc"><u>Klasse 8/1 – Ankündigungen</u></h1>
-
-    
-    <div style="text-align: center; margin-bottom: 15px;">
-  <label for="tagFilter"><b>🔎 Filtern nach Tag:</b></label>
-  <select id="tagFilter" style="padding: 8px; font-size: 1rem; border-radius: 6px;">
-    <option value="all">Alle</option>
-    <option value="neu">NEU</option>
-    <option value="julian">Author: Julian Kaiser</option>
-    <option value="all">📅 Alle Zeiträume</option>
-    <option value="1">Letzter Tag</option>
-    <option value="7">Letzte 7 Tage</option>
-    <option value="30">Letzter Monat</option>
-    <option value="365">Letztes Jahr</option>
-  </select>
-  </select>
-    </div>
-
     
     <div style="text-align: center; margin-bottom: 30px;" class="fade-in">
   <input type="text" id="searchInput" placeholder="🔍 Suche in Ankündigungen..." 
@@ -112,17 +95,6 @@
 
     
     <!-- UPDATE BOX -->
-
-    <div class="update-box fade-in">
-      <h2>A02 – Schülerratssitzung am 21.05.2025</h2>
-      <div class="tags">
-        <span class="tag1 date-tag" data-date="2025-05-21">Erstellt am: <b>21.05.2025</b></span>
-        <span class="tag1">Author: <b>Lenny Domke</b></span>
-        <span class="tag2 neu-tag">NEU</span>
-      </div>
-      <p>Am 21.05.2025 in der fünften Stunde findet die Schülerratssitzung zur Planung des Sommerfestes statt. Werdet euch bis dahin bitte darüber einig, was wir zum Sommerfest machen wollen.<br>
-      Vielen Dank!</p>
-    </div>
     
     
     <div class="update-box fade-in">
@@ -186,42 +158,7 @@
   });
 </script>
 
-
-    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById("searchInput");
-    const dateFilter = document.getElementById("dateFilter");
-    const updates = document.querySelectorAll(".update-box");
-
-    function filterUpdates() {
-      const searchValue = searchInput.value.toLowerCase();
-      const daysLimit = parseInt(dateFilter.value);
-      const now = new Date();
-
-      updates.forEach(update => {
-        const text = update.textContent.toLowerCase();
-        const dateTag = update.querySelector(".tag1 b");
-
-        let showByText = text.includes(searchValue);
-        let showByDate = true;
-
-        if (!isNaN(daysLimit)) {
-          const createdDate = new Date(dateTag.textContent.split(".").reverse().join("-"));
-          const diffInTime = now - createdDate;
-          const diffInDays = diffInTime / (1000 * 60 * 60 * 24);
-          showByDate = diffInDays <= daysLimit;
-        }
-
-        update.style.display = (showByText && showByDate) ? "block" : "none";
-      });
-    }
-
-    searchInput.addEventListener("input", filterUpdates);
-    dateFilter.addEventListener("change", filterUpdates);
-  });
-</script>
-
-    
+  
     
 </body>
 </html>
