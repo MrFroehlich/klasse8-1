@@ -39,6 +39,10 @@
   <button onclick="login()" style="padding: 4px 10px; border: none; background-color: #0078D7; color: white; border-radius: 4px;">Login</button>
   <div id="login-message" style="color: red; font-size: 0.9rem; margin-top: 4px;"></div>
 </div>
+
+    <p id="login-hinweis" style="color: red; text-align: right; margin-top: 10px;"><b>
+  Einloggen, um weitere Seiten zu sehen</b>
+    </p>
     
 </header>
 
@@ -114,6 +118,10 @@
       messageBox.style.color = "red";
       messageBox.textContent = "Falsches Passwort!";
     }
+
+      document.getElementById("login-hinweis").style.display = "none";
+      document.getElementById("login-hinweis").style.display = "block";
+    
   }
 </script>
 
