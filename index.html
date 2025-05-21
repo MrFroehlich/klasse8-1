@@ -33,6 +33,14 @@
       <li><a href="kontakt.html">Kontakt</a></li>
     </ul>
   </nav>
+
+<!-- LOGIN-BEREICH IM HEADER -->
+<div style="position: absolute; top: 20px; right: 20px; text-align: right;">
+  <input type="password" id="password-input" placeholder="Passwort" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc;">
+  <button onclick="login()" style="padding: 4px 10px; border: none; background-color: #0078D7; color: white; border-radius: 4px;">Login</button>
+  <div id="login-message" style="color: red; font-size: 0.9rem; margin-top: 4px;"></div>
+</div>
+    
 </header>
 
 
@@ -88,6 +96,29 @@
       <p>&copy; 2025 Julian Kaiser | Alle Rechte vorbehalten</p>
     </div>
   </footer>
+
+<script>
+  function login() {
+    const input = document.getElementById("password-input").value;
+    const correctPassword = "mlg8klasse"; // Dein gewünschtes Passwort
+    const messageBox = document.getElementById("login-message");
+
+    if (input === correctPassword) {
+      sessionStorage.setItem("eingeloggt", "true");
+      messageBox.style.color = "green";
+      messageBox.textContent = "Erfolgreich eingeloggt!";
+      setTimeout(() => {
+        messageBox.textContent = "";
+        location.reload(); // Seite neu laden, um ggf. Inhalte sichtbar zu machen
+      }, 800);
+    } else {
+      messageBox.style.color = "red";
+      messageBox.textContent = "Falsches Passwort!";
+    }
+  }
+</script>
+
+  
 </body>
 </html>
 
