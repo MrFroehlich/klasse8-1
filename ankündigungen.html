@@ -106,6 +106,13 @@
   <button onclick="login()" style="padding: 4px 10px; border: none; background-color: #0078D7; color: white; border-radius: 4px;">Login</button>
   <div id="login-message" style="color: red; font-size: 0.9rem; margin-top: 4px;"></div>
 </div>
+
+
+  <div id="logout-container" style="display: none; position: absolute; top: 60px; right: 20px;">
+  <button onclick="logout()" style="padding: 4px 10px; border: none; background-color: #cc0000; color: white; border-radius: 4px;">
+    Logout
+  </button>
+</div>
     
   
   <main class="main-content">
@@ -260,6 +267,21 @@
       statusBox.textContent = "🔒 Ausgeloggt";
       statusBox.style.color = "red";
     }
+
+    const logoutContainer = document.getElementById("logout-container");
+
+    if (istEingeloggt && logoutContainer) {
+    logoutContainer.style.display = "block";
+    } else if (logoutContainer) {
+    logoutContainer.style.display = "none";
+    }
+
+
+    function logout() {
+  sessionStorage.removeItem("eingeloggt");
+  sessionStorage.removeItem("rolle");
+  location.reload(); // Seite neu laden
+  }
   });
 </script>
 
