@@ -100,7 +100,7 @@ body {
   background-color: #1f1f1f;
   padding: 60px 20px;
   text-align: center;
-  margin-bottom: 20px
+  margin-bottom: 20px;
 }
 
 .about h2 {
@@ -124,7 +124,7 @@ body {
   display: flex;
   align-items: center;       /* Vertikal zentriert */
   gap: 15px;                 /* Abstand zwischen Logo und Text */
-  justify-content: center; /* Linksbündig */
+  justify-content: center;   /* Zentriert */
   color: #000000;
   font-size: 28px;
   font-weight: bold;
@@ -175,7 +175,7 @@ body {
   font-size: 28px;
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
-  color: ##e0e0e0;
+  color: #e0e0e0;
   background-color: rgba(255, 255, 255, 0.2); /* Optional: leichter Hintergrund */
   padding: 4px 10px;
   border-radius: 8px;
@@ -193,7 +193,7 @@ body {
   flex: 1 1 40%;
   text-align: left;
   padding-left: 40px;
-  margin-bottom: 20px
+  margin-bottom: 20px;
 }
 
 .about-text h3 {
@@ -226,16 +226,29 @@ body {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
+/* 3-Spalten Grid Layout für element-row */
 .element-row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px; /* Fügt horizontal UND vertikal Abstand hinzu */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px; /* Abstand zwischen Spalten & Zeilen */
 }
 
 .element-row > div {
   max-width: 300px;
   width: 100%;
+}
+
+/* Responsive Grid-Anpassung */
+@media (max-width: 1024px) {
+  .element-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .element-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 .section-note {
@@ -296,7 +309,6 @@ body {
   transform: scale(1.2);
 }
 
-
 @media (max-width: 768px) {
   .header-flex {
     flex-direction: column;
@@ -324,8 +336,6 @@ body {
   padding: 2rem;
   border-radius: 10px;
 }
-
-
 
 /* COUNTDOWN */
 #countdown {
@@ -394,10 +404,8 @@ blockquote {
 
 .overview-section ul li a:hover {
   background: #1A2E41;
-  transform: scale(1.1)
+  transform: scale(1.1);
 }
-
-
 
 /* FADE-IN ANIMATION */
 @keyframes fadeIn {
@@ -414,8 +422,6 @@ blockquote {
 .fade-in {
   animation: fadeIn 0.8s ease-out forwards;
 }
-
-
 
 main {
   max-width: 1200px;
@@ -441,10 +447,6 @@ main h1 {
   font-size: 2.5rem;
   text-align: center;
 }
-
-
-
-
 
 html, body {
   height: 100%;
