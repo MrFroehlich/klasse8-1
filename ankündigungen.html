@@ -228,8 +228,15 @@
     }, 3000);
   }
 
+  function logout() {
+    sessionStorage.removeItem("eingeloggt");
+    sessionStorage.removeItem("rolle");
+    location.reload(); // Seite neu laden
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     const statusBox = document.getElementById("login-status");
+    const logoutContainer = document.getElementById("logout-container");
     const istEingeloggt = sessionStorage.getItem("eingeloggt") === "true";
     const rolle = sessionStorage.getItem("rolle");
 
@@ -238,50 +245,28 @@
     const navKlassensprecher = document.querySelector(".nav-klassensprecher");
 
     if (istEingeloggt) {
-      // Menü für eingeloggte Nutzer anzeigen
       if (navOffen) navOffen.style.display = "none";
       if (navIntern) navIntern.style.display = "flex";
 
-      // Klassensprecher-Menü nur anzeigen, wenn Rolle "sprecher"
       if (rolle === "sprecher") {
         if (navKlassensprecher) navKlassensprecher.style.display = "flex";
+        statusBox.textContent = "🔓 Eingeloggt als Klassensprecher";
       } else {
         if (navKlassensprecher) navKlassensprecher.style.display = "none";
+        statusBox.textContent = "🔓 Eingeloggt";
       }
 
-      // Login Status anzeigen
-      if (rolle === "sprecher") {
-        statusBox.textContent = "🔓 Eingeloggt als Klassensprecher";
-        statusBox.style.color = "green";
-      } else {
-        statusBox.textContent = "🔓 Eingeloggt";
-        statusBox.style.color = "green";
-      }
+      statusBox.style.color = "green";
+      if (logoutContainer) logoutContainer.style.display = "block";
     } else {
-      // Nicht eingeloggt: öffentliches Menü zeigen, andere verstecken
       if (navOffen) navOffen.style.display = "flex";
       if (navIntern) navIntern.style.display = "none";
       if (navKlassensprecher) navKlassensprecher.style.display = "none";
 
-      // Login Status anzeigen
       statusBox.textContent = "🔒 Ausgeloggt";
       statusBox.style.color = "red";
+      if (logoutContainer) logoutContainer.style.display = "none";
     }
-
-    const logoutContainer = document.getElementById("logout-container");
-
-    if (istEingeloggt && logoutContainer) {
-    logoutContainer.style.display = "block";
-    } else if (logoutContainer) {
-    logoutContainer.style.display = "none";
-    }
-
-
-    function logout() {
-  sessionStorage.removeItem("eingeloggt");
-  sessionStorage.removeItem("rolle");
-  location.reload(); // Seite neu laden
-  }
   });
 </script>
 
