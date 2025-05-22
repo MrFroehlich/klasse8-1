@@ -69,20 +69,30 @@
 
   </div>
 
-  <nav>
-    <ul class="nav fade-in">
-      <li><a href="index.html">Start</a></li>
-      <li><a href="ankündigungen.html" class="active">Ankündigungen</a></li>
-      <li><a href="termine-und-veranstaltungen.html">Termine & Veranstaltungen</a></li>
-      <li><a href="tipps-tricks-pläne.html">Tipps, Tricks, Pläne</a></li>
-      <li><a href="downloads-formulare-protokolle.html">Downloads, Formulare, Protokolle</a></li>
-      <li><a href="planungen-und-infos.html">Planung Sommerfest</a></li>
-      <li><a href="spaß-und-fun.html">Spaß & Fun</a></li>
-      <li><a href="kontakt.html">Kontakt</a></li>
-      <br>
-      <li><a href="kontakt.html">Test</a></li>
-    </ul>
-  </nav>
+ <nav>
+  <!-- Öffentlich -->
+  <ul class="nav nav-offen fade-in">
+    <li><a href="index.html">Start</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+
+  <!-- Für eingeloggte Nutzer -->
+  <ul class="nav nav-intern fade-in" style="display: none;">
+    <li><a href="ankündigungen.html">Ankündigungen</a></li>
+    <li><a href="termine-und-veranstaltungen.html">Termine & Veranstaltungen</a></li>
+    <li><a href="tipps-tricks-pläne.html">Tipps, Tricks, Pläne</a></li>
+    <li><a href="downloads-formulare-protokolle.html">Downloads, Formulare, Protokolle</a></li>
+    <li><a href="planungen-und-infos.html">Planung Sommerfest</a></li>
+    <li><a href="spaß-und-fun.html">Spaß & Fun</a></li>
+  </ul>
+
+  <!-- Nur für Klassensprecher -->
+  <ul class="nav nav-klassensprecher fade-in" style="display: none;">
+    <li><a href="interne-infos.html">Interne Infos</a></li>
+    <li><a href="problematische-schüler.html">Problematische Schüler</a></li>
+  </ul>
+</nav>
+    
 
 <div id="login-status" style="position: absolute; top: 265px; right: 20px; font-weight: bold;">
 
@@ -194,28 +204,58 @@
 
 
 
-    <script>
+<script>
   function login() {
     const input = document.getElementById("password-input").value;
-    const correctPassword = "mlg8klasse"; // Dein gewünschtes Passwort
     const messageBox = document.getElementById("login-message");
 
-    if (input === correctPassword) {
-      sessionStorage.setItem("eingeloggt", "true");
+    const passwortNormal = "mlg8klasse";
+    const passwortSprecher = "mlg8sprecher";
+
+    if (input === passwortSprecher) {
+      sessionStorage.setItem("rolle", "sprecher");
       messageBox.style.color = "green";
-      messageBox.innerHTML = "Erfolgreich eingeloggt! <br> Du kannst nun alle passwortgeschützten Seiten sehen!";
-      setTimeout(() => {
-        messageBox.textContent = "";
-        location.reload(); // Seite neu laden, um ggf. Inhalte sichtbar zu machen
-      }, 3000);
+      messageBox.innerHTML = "Erfolgreich als <strong>Klassensprecher</strong> eingeloggt!<br>Du hast Zugriff auf alle Seiten.";
+    } else if (input === passwortNormal) {
+      sessionStorage.setItem("rolle", "normal");
+      messageBox.style.color = "green";
+      messageBox.innerHTML = "Erfolgreich eingeloggt!<br>Du hast Zugriff auf alle normalen Seiten.";
     } else {
+      sessionStorage.removeItem("rolle");
       messageBox.style.color = "red";
       messageBox.textContent = "Falsches Passwort!";
+      return;
     }
+
+    setTimeout(() => {
+      messageBox.textContent = "";
+      location.reload(); // Seite neu laden, um Inhalte sichtbar zu machen
+    }, 3000);
   }
 </script>
 
-  
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const istEingeloggt = sessionStorage.getItem("eingeloggt") === "true";
+  const rolle = sessionStorage.getItem("rolle");
+
+  if (istEingeloggt) {
+    // Zeige allgemeine eingeloggte Navi
+    const navIntern = document.querySelector(".nav-intern");
+    if (navIntern) navIntern.style.display = "flex";
+
+    // Zeige zusätzlich Klassensprecher-Navi, falls Rolle passt
+    if (rolle === "klassensprecher") {
+      const navKlassensprecher = document.querySelector(".nav-klassensprecher");
+      if (navKlassensprecher) navKlassensprecher.style.display = "flex";
+    }
+  }
+});
+</script>
+
+    
     
 </body>
 </html>
