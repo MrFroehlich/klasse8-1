@@ -231,7 +231,7 @@
   function logout() {
     sessionStorage.removeItem("eingeloggt");
     sessionStorage.removeItem("rolle");
-    location.reload(); // Seite neu laden
+    window.location.href = "index.html"; // Automatische Weiterleitung zur Startseite
   }
 
   document.addEventListener("DOMContentLoaded", () => {
