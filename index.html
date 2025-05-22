@@ -123,30 +123,40 @@
 
 <script>
   function login() {
-    const input = document.getElementById("password-input").value;
-    const messageBox = document.getElementById("login-message");
+  const inputField = document.getElementById("password-input");
+  const input = inputField.value;
+  const messageBox = document.getElementById("login-message");
 
-    const passwortNormal = "mlg8klasse";
-    const passwortSprecher = "mlg8sprecher";
+  const passwortNormal = "mlg8klasse";
+  const passwortSprecher = "mlg8sprecher";
 
-    if (input === passwortSprecher) {
-      sessionStorage.setItem("rolle", "sprecher");
-      sessionStorage.setItem("eingeloggt", "true");
-      messageBox.style.color = "green";
-      messageBox.innerHTML = "Erfolgreich als <strong>Klassensprecher</strong> eingeloggt!<br>Du hast Zugriff auf alle Seiten.";
-    } else if (input === passwortNormal) {
-      sessionStorage.setItem("rolle", "normal");
-      sessionStorage.setItem("eingeloggt", "true");
-      messageBox.style.color = "green";
-      messageBox.innerHTML = "Erfolgreich eingeloggt!<br>Du hast Zugriff auf alle normalen Seiten.";
-    } else {
-      sessionStorage.removeItem("rolle");
-      sessionStorage.setItem("eingeloggt", "false");
-      messageBox.style.color = "red";
-      messageBox.textContent = "Falsches Passwort!";
-      document.getElementById("password-input").value = "";
-      return;
-    }
+  if (input === passwortSprecher) {
+    sessionStorage.setItem("rolle", "sprecher");
+    sessionStorage.setItem("eingeloggt", "true");
+    messageBox.style.color = "green";
+    messageBox.innerHTML = "Erfolgreich als <strong>Klassensprecher</strong> eingeloggt!<br>Du hast Zugriff auf alle Seiten.";
+    setTimeout(() => {
+      messageBox.textContent = "";
+      location.reload();
+    }, 3000);
+  } else if (input === passwortNormal) {
+    sessionStorage.setItem("rolle", "normal");
+    sessionStorage.setItem("eingeloggt", "true");
+    messageBox.style.color = "green";
+    messageBox.innerHTML = "Erfolgreich eingeloggt!<br>Du hast Zugriff auf alle normalen Seiten.";
+    setTimeout(() => {
+      messageBox.textContent = "";
+      location.reload();
+    }, 3000);
+  } else {
+    sessionStorage.removeItem("rolle");
+    sessionStorage.setItem("eingeloggt", "false");
+    messageBox.style.color = "red";
+    messageBox.textContent = "Falsches Passwort!";
+    inputField.value = ""; // Eingabefeld leeren
+    inputField.focus();    // Optional: Cursor wieder ins Feld setzen
+  }
+}
 
     setTimeout(() => {
       messageBox.textContent = "";
