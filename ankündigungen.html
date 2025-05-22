@@ -92,26 +92,9 @@
     <li><a href="problematische-schüler.html">Problematische Schüler</a></li>
   </ul>
 </nav>
-    
 
-<div id="login-status" style="position: absolute; top: 265px; right: 20px; font-weight: bold;">
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const statusBox = document.getElementById("login-status");
-    const istEingeloggt = sessionStorage.getItem("eingeloggt") === "true";
-
-    if (istEingeloggt) {
-      statusBox.textContent = "🔓 Eingeloggt";
-      statusBox.style.color = "green";
-    } else {
-      statusBox.textContent = "🔒 Ausgeloggt";
-      statusBox.style.color = "red";
-    }
-  });
-</script>
-
-  </div>
+    <div id="login-status" style="position: absolute; top: 265px; right: 20px; font-weight: bold;">
+    </div>
     
     
 </header>
@@ -214,14 +197,17 @@
 
     if (input === passwortSprecher) {
       sessionStorage.setItem("rolle", "sprecher");
+      sessionStorage.setItem("eingeloggt", "true");
       messageBox.style.color = "green";
       messageBox.innerHTML = "Erfolgreich als <strong>Klassensprecher</strong> eingeloggt!<br>Du hast Zugriff auf alle Seiten.";
     } else if (input === passwortNormal) {
       sessionStorage.setItem("rolle", "normal");
+      sessionStorage.setItem("eingeloggt", "true");
       messageBox.style.color = "green";
       messageBox.innerHTML = "Erfolgreich eingeloggt!<br>Du hast Zugriff auf alle normalen Seiten.";
     } else {
       sessionStorage.removeItem("rolle");
+      sessionStorage.setItem("eingeloggt", "false");
       messageBox.style.color = "red";
       messageBox.textContent = "Falsches Passwort!";
       return;
@@ -232,27 +218,47 @@
       location.reload(); // Seite neu laden, um Inhalte sichtbar zu machen
     }, 3000);
   }
-</script>
 
+  document.addEventListener("DOMContentLoaded", () => {
+    const statusBox = document.getElementById("login-status");
+    const istEingeloggt = sessionStorage.getItem("eingeloggt") === "true";
+    const rolle = sessionStorage.getItem("rolle");
 
-
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-  const istEingeloggt = sessionStorage.getItem("eingeloggt") === "true";
-  const rolle = sessionStorage.getItem("rolle");
-
-  if (istEingeloggt) {
-    // Zeige allgemeine eingeloggte Navi
+    const navOffen = document.querySelector(".nav-offen");
     const navIntern = document.querySelector(".nav-intern");
-    if (navIntern) navIntern.style.display = "flex";
+    const navKlassensprecher = document.querySelector(".nav-klassensprecher");
 
-    // Zeige zusätzlich Klassensprecher-Navi, falls Rolle passt
-    if (rolle === "klassensprecher") {
-      const navKlassensprecher = document.querySelector(".nav-klassensprecher");
-      if (navKlassensprecher) navKlassensprecher.style.display = "flex";
+    if (istEingeloggt) {
+      // Menü für eingeloggte Nutzer anzeigen
+      if (navOffen) navOffen.style.display = "none";
+      if (navIntern) navIntern.style.display = "flex";
+
+      // Klassensprecher-Menü nur anzeigen, wenn Rolle "sprecher"
+      if (rolle === "sprecher") {
+        if (navKlassensprecher) navKlassensprecher.style.display = "flex";
+      } else {
+        if (navKlassensprecher) navKlassensprecher.style.display = "none";
+      }
+
+      // Login Status anzeigen
+      if (rolle === "sprecher") {
+        statusBox.textContent = "🔓 Eingeloggt als Klassensprecher";
+        statusBox.style.color = "green";
+      } else {
+        statusBox.textContent = "🔓 Eingeloggt";
+        statusBox.style.color = "green";
+      }
+    } else {
+      // Nicht eingeloggt: öffentliches Menü zeigen, andere verstecken
+      if (navOffen) navOffen.style.display = "flex";
+      if (navIntern) navIntern.style.display = "none";
+      if (navKlassensprecher) navKlassensprecher.style.display = "none";
+
+      // Login Status anzeigen
+      statusBox.textContent = "🔒 Ausgeloggt";
+      statusBox.style.color = "red";
     }
-  }
-});
+  });
 </script>
 
     
