@@ -74,7 +74,7 @@
     <h2 class="sub-title">– Webseite –</h2>
     </div>
 
-    <img src="Dein Abschnittstext(4).png" class="corner-logo right-logo" alt="Logo rechts" style="height: 100px; width: 100px; display: block;">
+    <img src="Dein Abschnittstext(4).png" class="corner-logo right-logo" alt="Logo rechts" style="height: 65px; width: 65px; display: block;">
 
   </div>
 
@@ -117,6 +117,12 @@
   <input type="password" id="password-input" placeholder="Passwort" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc;">
   <button onclick="login()" style="padding: 4px 10px; border: none; background-color: #0078D7; color: white; border-radius: 4px;">Login</button>
   <div id="login-message" style="color: red; font-size: 0.9rem; margin-top: 4px;"></div>
+</div>
+
+        <div id="logout-container" style="display: none; position: absolute; top: 266px; right: 20px;">
+  <button onclick="logout()" style="padding: 4px 10px; border: none; background-color: #cc0000; color: white; border-radius: 4px;">
+    Logout
+  </button>
 </div>
   
 
@@ -201,22 +207,76 @@
     <script>
   function login() {
     const input = document.getElementById("password-input").value;
-    const correctPassword = "mlg8klasse"; // Dein gewünschtes Passwort
     const messageBox = document.getElementById("login-message");
 
-    if (input === correctPassword) {
+    const passwortNormal = "mlg8klasse";
+    const passwortSprecher = "mlg8sprecher";
+
+    if (input === passwortSprecher) {
+      sessionStorage.setItem("rolle", "sprecher");
       sessionStorage.setItem("eingeloggt", "true");
       messageBox.style.color = "green";
-      messageBox.innerHTML = "Erfolgreich eingeloggt! <br> Du kannst nun alle passwortgeschützten Seiten sehen!";
-      setTimeout(() => {
-        messageBox.textContent = "";
-        location.reload(); // Seite neu laden, um ggf. Inhalte sichtbar zu machen
-      }, 3000);
+      messageBox.innerHTML = "Erfolgreich als <strong>Klassensprecher</strong> eingeloggt!<br>Du hast Zugriff auf alle Seiten.";
+    } else if (input === passwortNormal) {
+      sessionStorage.setItem("rolle", "normal");
+      sessionStorage.setItem("eingeloggt", "true");
+      messageBox.style.color = "green";
+      messageBox.innerHTML = "Erfolgreich eingeloggt!<br>Du hast Zugriff auf alle normalen Seiten.";
     } else {
+      sessionStorage.removeItem("rolle");
+      sessionStorage.setItem("eingeloggt", "false");
       messageBox.style.color = "red";
       messageBox.textContent = "Falsches Passwort!";
+      document.getElementById("password-input").value = "";
+      return;
     }
+
+    setTimeout(() => {
+      messageBox.textContent = "";
+      location.reload(); // Seite neu laden, um Inhalte sichtbar zu machen
+    }, 3000);
   }
+
+  function logout() {
+    sessionStorage.removeItem("eingeloggt");
+    sessionStorage.removeItem("rolle");
+    window.location.href = "index.html"; // Automatische Weiterleitung zur Startseite
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const statusBox = document.getElementById("login-status");
+    const logoutContainer = document.getElementById("logout-container");
+    const istEingeloggt = sessionStorage.getItem("eingeloggt") === "true";
+    const rolle = sessionStorage.getItem("rolle");
+
+    const navOffen = document.querySelector(".nav-offen");
+    const navIntern = document.querySelector(".nav-intern");
+    const navKlassensprecher = document.querySelector(".nav-klassensprecher");
+
+    if (istEingeloggt) {
+      if (navOffen) navOffen.style.display = "none";
+      if (navIntern) navIntern.style.display = "flex";
+
+      if (rolle === "sprecher") {
+        if (navKlassensprecher) navKlassensprecher.style.display = "flex";
+        statusBox.textContent = "🔓 Eingeloggt als Klassensprecher";
+      } else {
+        if (navKlassensprecher) navKlassensprecher.style.display = "none";
+        statusBox.textContent = "🔓 Eingeloggt";
+      }
+
+      statusBox.style.color = "green";
+      if (logoutContainer) logoutContainer.style.display = "block";
+    } else {
+      if (navOffen) navOffen.style.display = "flex";
+      if (navIntern) navIntern.style.display = "none";
+      if (navKlassensprecher) navKlassensprecher.style.display = "none";
+
+      statusBox.textContent = "🔒 Ausgeloggt";
+      statusBox.style.color = "red";
+      if (logoutContainer) logoutContainer.style.display = "none";
+    }
+  });
 </script>
   
 
