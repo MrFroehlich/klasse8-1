@@ -228,9 +228,10 @@ body {
 
 /* 3-Spalten Grid Layout für element-row */
 .element-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px; /* Abstand zwischen Spalten & Zeilen */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px; /* Fügt horizontal UND vertikal Abstand hinzu */
 }
 
 .element-row > div {
