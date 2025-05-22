@@ -115,23 +115,75 @@
 <script>
   function login() {
     const input = document.getElementById("password-input").value;
-    const correctPassword = "mlg8klasse"; // Dein gewünschtes Passwort
     const messageBox = document.getElementById("login-message");
 
-    if (input === correctPassword) {
+    const passwortNormal = "mlg8klasse";
+    const passwortSprecher = "mlg8sprecher";
+
+    if (input === passwortSprecher) {
+      sessionStorage.setItem("rolle", "sprecher");
       sessionStorage.setItem("eingeloggt", "true");
       messageBox.style.color = "green";
-      messageBox.innerHTML = "Erfolgreich eingeloggt! <br> Du kannst nun alle passwortgeschützten Seiten sehen!";
-      setTimeout(() => {
-        messageBox.textContent = "";
-        location.reload(); // Seite neu laden, um ggf. Inhalte sichtbar zu machen
-      }, 3000);
+      messageBox.innerHTML = "Erfolgreich als <strong>Klassensprecher</strong> eingeloggt!<br>Du hast Zugriff auf alle Seiten.";
+    } else if (input === passwortNormal) {
+      sessionStorage.setItem("rolle", "normal");
+      sessionStorage.setItem("eingeloggt", "true");
+      messageBox.style.color = "green";
+      messageBox.innerHTML = "Erfolgreich eingeloggt!<br>Du hast Zugriff auf alle normalen Seiten.";
     } else {
+      sessionStorage.removeItem("rolle");
+      sessionStorage.setItem("eingeloggt", "false");
       messageBox.style.color = "red";
       messageBox.textContent = "Falsches Passwort!";
+      return;
     }
-    
+
+    setTimeout(() => {
+      messageBox.textContent = "";
+      location.reload(); // Seite neu laden, um Inhalte sichtbar zu machen
+    }, 3000);
   }
+
+  function logout() {
+    sessionStorage.removeItem("eingeloggt");
+    sessionStorage.removeItem("rolle");
+    window.location.href = "index.html"; // Automatische Weiterleitung zur Startseite
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const statusBox = document.getElementById("login-status");
+    const logoutContainer = document.getElementById("logout-container");
+    const istEingeloggt = sessionStorage.getItem("eingeloggt") === "true";
+    const rolle = sessionStorage.getItem("rolle");
+
+    const navOffen = document.querySelector(".nav-offen");
+    const navIntern = document.querySelector(".nav-intern");
+    const navKlassensprecher = document.querySelector(".nav-klassensprecher");
+
+    if (istEingeloggt) {
+      if (navOffen) navOffen.style.display = "none";
+      if (navIntern) navIntern.style.display = "flex";
+
+      if (rolle === "sprecher") {
+        if (navKlassensprecher) navKlassensprecher.style.display = "flex";
+        statusBox.textContent = "🔓 Eingeloggt als Klassensprecher";
+      } else {
+        if (navKlassensprecher) navKlassensprecher.style.display = "none";
+        statusBox.textContent = "🔓 Eingeloggt";
+      }
+
+      statusBox.style.color = "green";
+      if (logoutContainer) logoutContainer.style.display = "block";
+    } else {
+      if (navOffen) navOffen.style.display = "flex";
+      if (navIntern) navIntern.style.display = "none";
+      if (navKlassensprecher) navKlassensprecher.style.display = "none";
+
+      statusBox.textContent = "🔒 Ausgeloggt";
+      statusBox.style.color = "red";
+      if (logoutContainer) logoutContainer.style.display = "none";
+    }
+  });
 </script>
 
   
