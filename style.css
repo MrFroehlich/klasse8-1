@@ -23,7 +23,7 @@ body {
 .header {
   background-color: #121212;
   padding: 20px 0;
-  border-bottom: 3px solid #d36b00;
+  border-bottom: 3px solid #1A2E41;
 }
 
 .logo {
@@ -63,7 +63,7 @@ body {
 /* HERO */
 .hero {
   background: linear-gradient(to right, #24415b, #24415b);
-  color: #000;
+  color: white;
   padding: 80px 20px;
   text-align: center;
   border-bottom: 4px solid #1A2E41;
