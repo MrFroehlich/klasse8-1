@@ -39,10 +39,12 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   list-style: none;
-  margin-top: 15px;
+  margin-top: 10px;
   gap: 15px;
+  padding: 0;
 }
 
+/* Damit beide Zeilen gleich aussehen */
 .nav li a {
   display: block;
   padding: 10px 16px;
@@ -51,8 +53,7 @@ body {
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
-  transition: transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .nav li a:hover {
