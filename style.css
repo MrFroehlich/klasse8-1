@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #1f1f1f;
+  background-color: #121212;
   color: #ffffff;
   line-height: 1.6;
 }
@@ -23,7 +23,7 @@ body {
 .header {
   background-color: #121212;
   padding: 20px 0;
-  border-bottom: 3px solid #1A2E41;
+  border-bottom: 3px solid #d36b00;
 }
 
 .logo {
@@ -39,36 +39,34 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   list-style: none;
-  margin-top: 10px;
+  margin-top: 15px;
   gap: 15px;
-  padding: 0;
 }
 
-/* Damit beide Zeilen gleich aussehen */
 .nav li a {
   display: block;
   padding: 10px 16px;
-  background-color: #24415b;
-  color: white;
+  background-color: #f77f00;
+  color: #121212;
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .nav li a:hover {
-  background-color: #1A2E41;
+  background-color: #d36200;
   transform: scale(1.1);
 }
 
 /* HERO */
 .hero {
-  background: linear-gradient(to right, #24415b, #24415b);
-  color: white;
+  background: linear-gradient(to right, #ff9422, #ff7b00);
+  color: #000;
   padding: 80px 20px;
   text-align: center;
-  border-bottom: 4px solid #1A2E41;
-  margin-bottom: 15px;
+  border-bottom: 4px solid #d36b00;
 }
 
 .hero h1 {
@@ -100,7 +98,7 @@ body {
   background-color: #1f1f1f;
   padding: 60px 20px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 20px
 }
 
 .about h2 {
@@ -114,8 +112,18 @@ body {
   color: #dddddd;
 }
 
+/* FOOTER */
+.footer {
+  background-color: #181818;
+  color: #aaaaaa;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  border-top: 2px solid #333;
+}
+
 .nav li a.active {
-  background-color: #1A2E41;
+  background-color: #d36200;
   pointer-events: none;
   cursor: default;
 }
@@ -124,7 +132,7 @@ body {
   display: flex;
   align-items: center;       /* Vertikal zentriert */
   gap: 15px;                 /* Abstand zwischen Logo und Text */
-  justify-content: center;   /* Zentriert */
+  justify-content: center; /* Linksbündig */
   color: #000000;
   font-size: 28px;
   font-weight: bold;
@@ -175,7 +183,7 @@ body {
   font-size: 28px;
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
-  color: #e0e0e0;
+  color: ##e0e0e0;
   background-color: rgba(255, 255, 255, 0.2); /* Optional: leichter Hintergrund */
   padding: 4px 10px;
   border-radius: 8px;
@@ -193,7 +201,7 @@ body {
   flex: 1 1 40%;
   text-align: left;
   padding-left: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 20px
 }
 
 .about-text h3 {
@@ -226,7 +234,6 @@ body {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-/* 3-Spalten Grid Layout für element-row */
 .element-row {
   display: flex;
   justify-content: center;
@@ -239,27 +246,11 @@ body {
   width: 100%;
 }
 
-/* Responsive Grid-Anpassung */
-@media (max-width: 1024px) {
-  .element-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .element-row {
-    grid-template-columns: 1fr;
-  }
-}
-
 .section-note {
   margin-bottom: 40px;
 }
 
 .title-wrapper {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   text-align: center;
   background-color: #444; /* optional, falls der graue Hintergrund gewünscht ist */
   padding: 20px;
@@ -310,6 +301,7 @@ body {
   transform: scale(1.2);
 }
 
+
 @media (max-width: 768px) {
   .header-flex {
     flex-direction: column;
@@ -319,7 +311,7 @@ body {
   }
 
   .corner-logo {
-    width: 120px;
+    width: 120px; /* oder kleiner, falls nötig */
   }
 
   .center-title {
@@ -330,12 +322,6 @@ body {
     font-size: 22px;
     padding: 6px 12px;
   }
-}
-
-.main-content {
-  background-color: #1f1f1f;
-  padding: 2rem;
-  border-radius: 10px;
 }
 
 .main-content {
