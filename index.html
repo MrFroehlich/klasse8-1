@@ -123,7 +123,7 @@
 
 <script>
   function login() {
-    const input = document.getElementById("password-input").value.trim();
+    const input = document.getElementById("password-input").value;
     const messageBox = document.getElementById("login-message");
 
     const passwortNormal = "mlg8klasse";
@@ -134,26 +134,30 @@
       sessionStorage.setItem("eingeloggt", "true");
       messageBox.style.color = "green";
       messageBox.innerHTML = "Erfolgreich als <strong>Klassensprecher</strong> eingeloggt!<br>Du hast Zugriff auf alle Seiten.";
-      setTimeout(() => location.reload(), 2000);
     } else if (input === passwortNormal) {
       sessionStorage.setItem("rolle", "normal");
       sessionStorage.setItem("eingeloggt", "true");
       messageBox.style.color = "green";
-      messageBox.innerHTML = "Erfolgreich eingeloggt!<br>Du hast Zugriff auf die normalen Seiten.";
-      setTimeout(() => location.reload(), 2000);
+      messageBox.innerHTML = "Erfolgreich eingeloggt!<br>Du hast Zugriff auf alle normalen Seiten.";
     } else {
       sessionStorage.removeItem("rolle");
       sessionStorage.setItem("eingeloggt", "false");
       messageBox.style.color = "red";
-      messageBox.textContent = "❌ Falsches Passwort!";
-      document.getElementById("password-input").value = ""; // Feld leeren
+      messageBox.textContent = "Falsches Passwort!";
+      document.getElementById("password-input").value = "";
+      return;
     }
+
+    setTimeout(() => {
+      messageBox.textContent = "";
+      location.reload(); // Seite neu laden, um Inhalte sichtbar zu machen
+    }, 3000);
   }
 
   function logout() {
     sessionStorage.removeItem("eingeloggt");
     sessionStorage.removeItem("rolle");
-    window.location.href = "index.html"; // zurück zur Startseite
+    window.location.href = "index.html"; // Automatische Weiterleitung zur Startseite
   }
 
   document.addEventListener("DOMContentLoaded", () => {
