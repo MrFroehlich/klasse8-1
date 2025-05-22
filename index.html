@@ -123,8 +123,7 @@
 
 <script>
   function login() {
-    const inputField = document.getElementById("password-input");
-    const input = inputField.value;
+    const input = document.getElementById("password-input").value.trim();
     const messageBox = document.getElementById("login-message");
 
     const passwortNormal = "mlg8klasse";
@@ -135,37 +134,31 @@
       sessionStorage.setItem("eingeloggt", "true");
       messageBox.style.color = "green";
       messageBox.innerHTML = "Erfolgreich als <strong>Klassensprecher</strong> eingeloggt!<br>Du hast Zugriff auf alle Seiten.";
-      setTimeout(() => {
-        messageBox.textContent = "";
-        location.reload();
-      }, 3000);
+      setTimeout(() => location.reload(), 2000);
     } else if (input === passwortNormal) {
       sessionStorage.setItem("rolle", "normal");
       sessionStorage.setItem("eingeloggt", "true");
       messageBox.style.color = "green";
-      messageBox.innerHTML = "Erfolgreich eingeloggt!<br>Du hast Zugriff auf alle normalen Seiten.";
-      setTimeout(() => {
-        messageBox.textContent = "";
-        location.reload();
-      }, 3000);
+      messageBox.innerHTML = "Erfolgreich eingeloggt!<br>Du hast Zugriff auf die normalen Seiten.";
+      setTimeout(() => location.reload(), 2000);
     } else {
       sessionStorage.removeItem("rolle");
       sessionStorage.setItem("eingeloggt", "false");
       messageBox.style.color = "red";
-      messageBox.textContent = "Falsches Passwort!";
-      inputField.value = "";
-      inputField.focus();
+      messageBox.textContent = "❌ Falsches Passwort!";
+      document.getElementById("password-input").value = ""; // Feld leeren
     }
   }
 
   function logout() {
     sessionStorage.removeItem("eingeloggt");
     sessionStorage.removeItem("rolle");
-    window.location.href = "index.html";
+    window.location.href = "index.html"; // zurück zur Startseite
   }
 
   document.addEventListener("DOMContentLoaded", () => {
     const statusBox = document.getElementById("login-status");
+    const logoutContainer = document.getElementById("logout-container");
     const istEingeloggt = sessionStorage.getItem("eingeloggt") === "true";
     const rolle = sessionStorage.getItem("rolle");
 
@@ -186,6 +179,7 @@
       }
 
       statusBox.style.color = "green";
+      if (logoutContainer) logoutContainer.style.display = "block";
     } else {
       if (navOffen) navOffen.style.display = "flex";
       if (navIntern) navIntern.style.display = "none";
@@ -193,6 +187,7 @@
 
       statusBox.textContent = "🔒 Ausgeloggt";
       statusBox.style.color = "red";
+      if (logoutContainer) logoutContainer.style.display = "none";
     }
   });
 </script>
