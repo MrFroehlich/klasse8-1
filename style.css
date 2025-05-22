@@ -155,46 +155,30 @@ body {
 }
 
 /* Neuer Header-Aufbau mit zwei Logos und zentriertem Titel */
-/* HEADER FLEX CONTAINER */
 .header-flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 30px;
   position: relative;
-  flex-wrap: wrap; /* Wichtig für kleine Bildschirme */
-  gap: 10px;
 }
 
-/* LOGOS */
 .corner-logo {
   width: 200px;
   height: auto;
-  flex-shrink: 0;
 }
 
-/* CENTER TITLE als flexibles Element */
 .center-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 28px;
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
-  color: #e0e0e0; /* korrigiert */
-  background-color: rgba(255, 255, 255, 0.2);
+  color: #e0e0e0;
+  background-color: rgba(255, 255, 255, 0.2); /* Optional: leichter Hintergrund */
   padding: 4px 10px;
   border-radius: 8px;
-  flex-grow: 1;  /* nimmt den verfügbaren Platz ein */
-  text-align: center;
-  order: 2;      /* damit title immer in der Mitte bleibt */
-  min-width: 150px; /* verhindert zu kleinen Titel */
-}
-
-/* Damit Logos links und rechts bleiben */
-.header-flex > .corner-logo:first-child {
-  order: 1;
-}
-
-.header-flex > .corner-logo:last-child {
-  order: 3;
 }
 
 .about-flex {
@@ -255,7 +239,18 @@ body {
   width: 100%;
 }
 
+/* Responsive Grid-Anpassung */
+@media (max-width: 1024px) {
+  .element-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
+@media (max-width: 600px) {
+  .element-row {
+    grid-template-columns: 1fr;
+  }
+}
 
 .section-note {
   margin-bottom: 40px;
@@ -315,26 +310,32 @@ body {
   transform: scale(1.2);
 }
 
-/* RESPONSIVE ANPASSUNGEN */
 @media (max-width: 768px) {
   .header-flex {
     flex-direction: column;
     align-items: center;
     padding: 10px;
+    gap: 10px;
   }
 
   .corner-logo {
-    width: 120px;
-    margin-bottom: 5px;
+    width: 120px; /* oder kleiner, falls nötig */
   }
 
   .center-title {
-    order: 2;
+    position: static;
+    transform: none;
+    margin-top: 10px;
+    text-align: center;
     font-size: 22px;
     padding: 6px 12px;
-    background-color: rgba(255, 255, 255, 0.15);
-    min-width: auto;
   }
+}
+
+.main-content {
+  background-color: #1f1f1f;
+  padding: 2rem;
+  border-radius: 10px;
 }
 
 .main-content {
@@ -474,94 +475,4 @@ footer {
   padding: 20px 10px;
   font-size: 0.9rem;
   border-top: 2px solid #333;
-}
-
-
-
-
-/* --- HEADER FLEX CONTAINER --- */
-.header-flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 30px;
-  flex-wrap: wrap; /* damit Elemente umbrechen */
-  gap: 10px;
-}
-
-/* Logos links und rechts */
-.corner-logo {
-  width: 200px;
-  height: auto;
-  flex-shrink: 0;
-}
-
-/* Wrapper für Titel (zwei Zeilen) */
-.title-wrapper {
-  flex-grow: 1;           /* nimmt den verfügbaren Platz */
-  text-align: center;
-  min-width: 150px;       /* verhindert zu kleine Breite */
-  order: 2;               /* Titel steht mittig */
-}
-
-/* Haupttitel */
-.main-title {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  font-size: 28px;
-  color: #e0e0e0;
-  margin: 0;
-  padding: 4px 10px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-}
-
-/* Untertitel */
-.sub-title {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  color: #e0e0e0;
-  margin: 4px 0 0 0;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 2px 8px;
-  border-radius: 6px;
-}
-
-/* Reihenfolge Logos festlegen */
-.header-flex > .left-logo {
-  order: 1;
-}
-
-.header-flex > .right-logo {
-  order: 3;
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-  .header-flex {
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 15px;
-  }
-
-  .corner-logo {
-    width: 120px;
-    margin-bottom: 5px;
-  }
-
-  .title-wrapper {
-    order: 2;
-    min-width: auto;
-  }
-
-  .main-title {
-    font-size: 22px;
-    padding: 6px 12px;
-  }
-
-  .sub-title {
-    font-size: 14px;
-    padding: 4px 10px;
-  }
 }
