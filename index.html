@@ -144,6 +144,7 @@
       sessionStorage.setItem("eingeloggt", "false");
       messageBox.style.color = "red";
       messageBox.textContent = "Falsches Passwort!";
+      document.getElementById("password-input").value = "";
       return;
     }
 
@@ -210,7 +211,7 @@
     const distance = countdownDate - now;
 
     if (distance < 0) {
-      document.getElementById("countdown").innerHTML = "<p>Das Sommerfest hat begonnen!</p>";
+      document.getElementById("countdown").innerHTML = "<p>Die Sommerferien haben begonnen!</p>";
       clearInterval(interval);
       return;
     }
