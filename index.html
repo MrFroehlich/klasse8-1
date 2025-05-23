@@ -204,7 +204,7 @@
 <script>
   // Datum, bis zu dem runtergezählt wird (JJJJ, MM-1, TT, hh, mm, ss)
   // Beispiel: Sommerfest am 15. Juli 2025 um 15:00 Uhr
-  new Date("2025-06-28T00:00:01").getTime();
+  const countdownDate = new Date(2025, 5, 28, 0, 0, 1).getTime();
 
   function updateCountdown() {
     const now = new Date().getTime();
