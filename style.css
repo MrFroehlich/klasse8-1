@@ -64,29 +64,7 @@ body {
   background-color: #1A2E41;
   pointer-events: none;
   cursor: default;
-
-  .nav li b {
-  display: block;
-  padding: 10px 16px;
-  background-color: #4f121a;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  transition: transform 0.2s ease;
-}
-
-.nav li b:hover {
-  background-color: #3b0e14;
-  transform: scale(1.1);
-}
-
-.nav li b.active {
-  background-color: #3b0e14;
-  pointer-events: none;
-  cursor: default;
-}
+  
 
 /* HERO */
 .hero {
