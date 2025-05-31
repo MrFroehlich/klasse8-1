@@ -22,11 +22,11 @@
       padding: 2rem;
     }
 
-    .event-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    }
+ .event-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
 
     .event-card {
       background-color: #cccccc;
@@ -61,163 +61,6 @@
       text-align: center;
       margin-bottom: 2rem;
     }
-
-
-        .header {
-      background-color: #f0f0f0;
-      padding: 10px 20px;
-      border-bottom: 2px solid #ccc;
-    }
-
-    .header-flex {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .corner-logo {
-      width: 65px;
-      height: 65px;
-    }
-
-    .title-wrapper {
-      text-align: center;
-      flex: 1;
-      min-width: 250px;
-    }
-
-    .main-title {
-      font-size: 1.4rem;
-      margin: 0;
-    }
-
-    .sub-title {
-      font-size: 1rem;
-      margin: 0;
-      color: #666;
-    }
-
-    nav {
-      margin-top: 10px;
-      text-align: center;
-    }
-
-    .nav {
-      list-style: none;
-      padding: 0;
-      margin: 10px 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .nav li a {
-      text-decoration: none;
-      color: #0078D7;
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-
-    .nav li a:hover,
-    .nav li a.active {
-      background-color: #0078D7;
-      color: white;
-    }
-
-    .fade-in {
-      animation: fadeIn 0.5s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    #login-section {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      text-align: right;
-    }
-
-    #login-section input,
-    #login-section button {
-      padding: 4px 8px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      margin-left: 4px;
-    }
-
-    #login-section button {
-      background-color: #0078D7;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    #login-message {
-      color: red;
-      font-size: 0.9rem;
-      margin-top: 4px;
-    }
-
-    #logout-container {
-      display: none;
-      position: absolute;
-      top: 110px;
-      right: 20px;
-    }
-
-    #logout-container button {
-      background-color: #cc0000;
-      color: white;
-      border: none;
-      padding: 4px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    #login-status {
-      font-weight: bold;
-      position: absolute;
-      top: 80px;
-      right: 20px;
-    }
-
-    @media (max-width: 600px) {
-      .header-flex {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .corner-logo {
-        width: 50px;
-        height: 50px;
-      }
-
-      .main-title {
-        font-size: 1.2rem;
-      }
-
-      .sub-title {
-        font-size: 0.9rem;
-      }
-
-      #login-section, #login-status, #logout-container {
-        position: static;
-        text-align: center;
-        margin: 5px 0;
-      }
-
-      nav .nav {
-        flex-direction: column;
-        gap: 5px;
-      }
-    }  
   </style>
 </head>
 
@@ -263,8 +106,7 @@
 </nav>
       
 
-    <div id="login-status" style="position: absolute; top: 190px; right: 20px; font-weight: bold;">
-    </div>
+<div id="login-status" style="position: absolute; top: 190px; right: 20px; font-weight: bold;">
 
   
 <script>
@@ -287,16 +129,17 @@
   </header>
 
 
-  <div id="login-section">
-    <input type="password" id="password-input" placeholder="Passwort">
-    <button onclick="login()">Login</button>
-    <div id="login-message"></div>
-  </div>
+<div style="position: absolute; top: 20px; right: 20px; text-align: right;">
+  <input type="password" id="password-input" placeholder="Passwort" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc;">
+  <button onclick="login()" style="padding: 4px 10px; border: none; background-color: #0078D7; color: white; border-radius: 4px;">Login</button>
+  <div id="login-message" style="color: red; font-size: 0.9rem; margin-top: 4px;"></div>
+</div>
 
-  <div id="logout-container">
-    <button onclick="logout()">Logout</button>
-  </div>
-</header>
+        <div id="logout-container" style="display: none; position: absolute; top: 266px; right: 20px;">
+  <button onclick="logout()" style="padding: 4px 10px; border: none; background-color: #cc0000; color: white; border-radius: 4px;">
+    Logout
+  </button>
+</div>
   
 
   <main class="main-content fade-in">
